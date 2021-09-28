@@ -5,6 +5,12 @@
   right: 0;
   padding: 2.7rem 0;
   z-index: 10;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.39, 0.99, 0.78, 0.99);
+
+  .loaded & {
+    opacity: 1;
+  }
 
   @media (min-width: $stop-scaling) {
     padding: 27px 0;
@@ -35,6 +41,12 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  transform: translateX(-20px);
+  transition: transform 0.3s cubic-bezier(0.39, 0.99, 0.78, 0.99);
+
+  .loaded & {
+    transform: translateX(0);
+  }
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -247,11 +259,16 @@
       content: "";
       position: absolute;
       bottom: 0;
-      width: 100%;
+      width: 0%;
       height: 2px;
       background-color: $c-light;
       display: none;
       left: 0;
+      transition: width 0.5s ease;
+
+      .loaded & {
+        width: 100%;
+      }
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
